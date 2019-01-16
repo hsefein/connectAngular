@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     });
 }
 
-addProject(project_name: string) {
+  addProject(project_name: string) {
     const project: Project = new Project();
     project.project_name = project_name;
     this.projectService.create(project).subscribe(value => {
@@ -28,8 +28,14 @@ addProject(project_name: string) {
     });
 }
 
-deleteProject(project: Project) {
+  deleteProject(project: Project) {
     this.projectService.delete(project).subscribe(value => {
+      this.ngOnInit();
+    });
+  }
+
+  updateProject(project: Project) {
+    this.projectService.patch(project).subscribe(value1 => {
       this.ngOnInit();
     });
   }

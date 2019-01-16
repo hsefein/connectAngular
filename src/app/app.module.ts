@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import {AngularHalModule} from 'angular4-hal';
 import {ExternalConfigurationService} from './external-configuration-service';
 import {ProjectService} from './service/project-service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import {ProjectService} from './service/project-service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AngularHalModule.forRoot()
   ],
   providers: [
