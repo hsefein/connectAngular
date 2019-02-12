@@ -1,0 +1,13 @@
+
+<mat-card>
+  <h3>Module Add</h3>
+  <form (ngSubmit)="addModule()">
+  <mat-form-field>
+    <mat-label>Module Name</mat-label>
+    <input [formControl]="ModuleName" type="text" matInput>
+</mat-form-field>
+  <br />
+
+  <button color="primary" mat-raised-button>Add</button>
+  </form>
+</mat-card>

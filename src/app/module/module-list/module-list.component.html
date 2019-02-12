@@ -1,0 +1,21 @@
+<table  class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let module of modules">
+    <td>{{module.name}}</td>
+    <td>
+      <a mat-button [routerLink]="['/module/module-edit']" >
+        <mat-icon color="primary" build>build</mat-icon>
+      </a>
+    </td>
+    <td>
+      <a mat-button (click)="delete(module)">
+        <mat-icon color="warn" delete_forever>delete_forever</mat-icon>
+      </a>
+    </td>
+  </tr>
+
+</table>

@@ -1,0 +1,25 @@
+<mat-card>
+
+<h3>Student Module Edit</h3>
+<form (ngSubmit)="editStudentModule()">
+
+  <mat-form-field>
+    <mat-label>Student Name</mat-label>
+    <mat-select >
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+
+  <mat-form-field>
+    <mat-label>Module Name</mat-label>
+    <mat-select>
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+
+  <button type="submit" color="primary" mat-raised-button>Save</button>
+</form>
+
+</mat-card>

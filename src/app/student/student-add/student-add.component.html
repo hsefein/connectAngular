@@ -1,0 +1,19 @@
+
+  <mat-card>
+    <h3>Student Add</h3>
+    <form (ngSubmit)="addStudent()">
+  <mat-form-field>
+    <mat-label>Student Name</mat-label>
+    <input matInput [formControl]="StudentName" type="text" >
+  </mat-form-field>
+    <br />
+
+  <mat-form-field>
+    <mat-label>Date of Birth</mat-label>
+    <input matInput [formControl]="DoB" type="date" >
+  </mat-form-field>
+    <br />
+
+  <button color="primary" mat-raised-button>Add</button>
+    </form>
+  </mat-card>

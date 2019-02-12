@@ -1,0 +1,27 @@
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>DoB</th>
+    <th># Modules</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let student of students" >
+    <td>{{student.name}}</td>
+    <td>{{student.dateOfBirth}}</td>
+    <td><button mat-fab color="primary">{{student.studentModules.length}}</button></td>
+    <td>
+      <a mat-button [routerLink]="['/student/student-edit']" >
+        <mat-icon color="primary" build>build</mat-icon>
+      </a>
+    </td>
+    <td>
+      <a mat-button (click)="delete(student)">
+        <mat-icon color="warn" delete_forever>delete_forever</mat-icon>
+      </a>
+    </td>
+  </tr>
+
+</table>
+

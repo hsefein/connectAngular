@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card>
+        <h2>Student</h2>
+        <app-student-list></app-student-list>
+
+        <a routerLink="/student/student-add">
+          <mat-icon add_circle>add_circle</mat-icon>
+        </a>
+
+
+      </mat-card>
+    </div>
+    <div class="col-md-12">
+      <mat-card>
+        <h2>Module</h2>
+
+        <app-module-list></app-module-list>
+        <a routerLink="/module/module-add">
+          <mat-icon add_circle>add_circle</mat-icon>
+        </a>
+
+      </mat-card>
+
+    </div>
+
+    <div class="col-md-12">
+      <mat-card>
+        <h2>Student Module</h2>
+        <app-studentmodule-list></app-studentmodule-list>
+
+        <a routerLink="/studentmodule/studentmodule-add">
+          <mat-icon add_circle>add_circle</mat-icon>
+        </a>
+
+      </mat-card>
+    </div>
+  </div>
+</div>
