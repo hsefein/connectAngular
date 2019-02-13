@@ -16,12 +16,12 @@ import {ModuleDetailComponent} from './module/module-detail/module-detail.compon
 import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'prefix'},
   {path: 'home', component: HomeComponent},
   {path: 'student/student-add', component: StudentAddComponent},
   {path: 'student/student-edit/:id', component: StudentEditComponent},
   {path: 'student/student-list', component: StudentListComponent},
-  {path: 'student/student-detail', component: StudentDetailComponent},
+  {path: 'student/student-detail/:id', component: StudentDetailComponent},
   {path: 'module/module-add', component: ModuleAddComponent},
   {path: 'module/module-edit', component: ModuleEditComponent},
   {path: 'module/module-list', component: ModuleListComponent},

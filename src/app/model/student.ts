@@ -5,7 +5,7 @@ class StudentModules {
 
 export class Student extends Resource {
 
-  // id: number;
+  id: number;
   name: string;
   dateOfBirth: Date;
   studentModules: StudentModules[];

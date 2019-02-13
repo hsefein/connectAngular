@@ -1,5 +1,4 @@
 <mat-card>
-  {{student.name}}
   <h3>Student Edit</h3>
   <form (ngSubmit)="editStudent()">
     <mat-form-field>
@@ -9,11 +8,15 @@
     <br />
 
     <mat-form-field>
-      <mat-label>Date of Birth</mat-label>
-      <input type="date" matInput [formControl]="StudentDoB" >
+      <mat-label>{{student.dateOfBirth | date: 'MM.dd.yyyy'}}</mat-label>
+      <input [matDatepicker]="picker1" matInput [formControl]="StudentDoB">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
     <br />
 
     <button type="submit" color="primary" mat-raised-button>Save</button>
   </form>
 </mat-card>
+
+

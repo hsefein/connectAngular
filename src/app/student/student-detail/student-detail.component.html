@@ -1,5 +1,34 @@
-<p>
-  student-detail works!
-</p>
+<div class="container">
+  <div class="row">
 
+<div class="col-md-6">
+<mat-card>
 <h3>Student Detail</h3>
+
+  <table class="table table-striped">
+    <tr>
+      <td><mat-label>Student Name</mat-label></td>
+      <td><mat-label>Date of Birth</mat-label></td>
+    </tr>
+    <tr>
+      <td>{{student.name}}</td>
+      <td>{{student.dateOfBirth | date: 'dd.MM.yyyy'}}</td>
+    </tr>
+  </table>
+  <!--<a mat-raised-button color="primary" [routerLink]="['/student/student-edit',student.id]" >Edit</a>-->
+</mat-card>
+</div>
+
+<div class="col-md-12">
+<mat-card>
+
+  <h3>Student Module</h3>
+  <a routerLink="/module/module-add">
+    <mat-icon add_circle>add_circle</mat-icon>
+  </a>
+
+</mat-card>
+</div>
+  </div>
+</div>
+

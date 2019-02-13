@@ -31,7 +31,7 @@ export class StudentAddComponent implements OnInit {
 
     this.studentService.create(student).subscribe(value => {
       this.ngOnInit();
-      this.router.navigate(["/home"])
+      this.router.navigate(['/home']);
     }, error1 => {
       alert(`Could not update: ${error1}`);
     });

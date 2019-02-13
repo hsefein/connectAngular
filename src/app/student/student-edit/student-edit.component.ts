@@ -14,13 +14,14 @@ export class StudentEditComponent implements OnInit {
   @Input()
   student: Student;
   StudentName = new FormControl();
-  StudentDoB = new FormControl();
+  StudentDoB = new FormControl(new Date().toISOString());
 
   constructor(public studentService: StudentService, protected router: Router, protected activeRoute: ActivatedRoute) {
     activeRoute.params.subscribe(value => {
       this.studentService.get(value['id']).subscribe(student => {
         this.student = student;
         this.StudentName.setValue(this.student.name);
+        this.StudentDoB.setValue(this.student.dateOfBirth);
       });
     });
 
@@ -32,8 +33,10 @@ export class StudentEditComponent implements OnInit {
 
   editStudent(): void {
     this.student.name = this.StudentName.value;
+    this.student.dateOfBirth = this.StudentDoB.value;
     this.studentService
       .update(this.student)
       .subscribe(value => this.ngOnInit());
+    this.router.navigate(['/home']);
   }
 }

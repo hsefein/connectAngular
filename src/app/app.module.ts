@@ -13,11 +13,11 @@ import {
   MatBadgeModule,
   MatButtonModule,
   MatCardModule,
-  MatCheckboxModule, MatFormFieldModule,
+  MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatNativeDateModule,
   MatOptionModule, MatSelectModule,
-  MatTableModule
+  MatTableModule, NativeDateModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { StudentListComponent } from './student/student-list/student-list.component';
@@ -67,6 +67,9 @@ import { HomeComponent } from './home/home.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatBadgeModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NativeDateModule,
     FormsModule,
     AngularHalModule.forRoot()
     // RouterModule

@@ -2,6 +2,6 @@ import {Resource} from 'angular4-hal';
 
 export class Module extends Resource {
 
-  // id: number;
+  id: number;
   name: string;
 }

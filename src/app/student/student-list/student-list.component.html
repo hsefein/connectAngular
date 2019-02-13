@@ -8,11 +8,13 @@
     <th>Delete</th>
   </tr>
   <tr *ngFor="let student of students" >
-    <td>{{student.name}}</td>
+      <a [routerLink]="['/student/student-detail',student.id]">
+        <td>{{student.name}}</td>
+      </a>
     <td>{{student.dateOfBirth}}</td>
-    <td><button mat-fab color="primary">{{student.studentModules.length}}</button></td>
+    <td><button matBadgeOverlap="false" matBadge="{{student.studentModules.length}}" color="primary"></button></td>
     <td>
-      <a mat-button [routerLink]="['/student/student-edit']" >
+      <a mat-button [routerLink]="['/student/student-edit',student.id]" >
         <mat-icon color="primary" build>build</mat-icon>
       </a>
     </td>

@@ -4,7 +4,7 @@ import {Module} from './module';
 
 export class StudentModule extends Resource {
 
-  // id: number;
+  id: number;
   student: Student;
   module: Module;
 }
