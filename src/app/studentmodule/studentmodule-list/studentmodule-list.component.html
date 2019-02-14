@@ -1,3 +1,6 @@
+
+{{student.id}}
+
 <table class="table table-striped">
   <tr>
     <th>Student Name</th>
@@ -5,16 +8,16 @@
     <th>Edit</th>
     <th>Delete</th>
   </tr>
-  <tr *ngFor="let studentmodule of studentModules">
-    <td>{{studentmodule.student ? studentmodule.student.name : 'Not set' }}</td>
-    <td>{{studentmodule.module ? studentmodule.module.name : 'Not set'}}</td>
+  <tr *ngFor="let studentModule of studentModules">
+    <td>{{studentModule.student ? studentModule.student.name : 'Not set' }}</td>
+    <td>{{studentModule.module ? studentModule.module.name : 'Not set'}}</td>
     <td>
       <a mat-button [routerLink]="['/studentmodule/studentmodule-edit']" >
         <mat-icon color="primary" build>build</mat-icon>
       </a>
     </td>
     <td>
-      <a mat-button (click)="delete(studentmodule)">
+      <a mat-button (click)="delete(studentModule)">
         <mat-icon color="warn" delete_forever>delete_forever</mat-icon>
       </a>
     </td>

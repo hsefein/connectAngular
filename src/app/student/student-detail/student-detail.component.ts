@@ -5,8 +5,6 @@ import {Student} from '../../model/student';
 import {FormControl} from '@angular/forms';
 import {StudentModule} from '../../model/studentmodule';
 import {Module} from '../../model/module';
-import {StudentModuleService} from '../../service/studentmodule-service';
-import {ModuleService} from '../../service/module.service';
 
 @Component({
   selector: 'app-student-detail',
@@ -16,7 +14,6 @@ import {ModuleService} from '../../service/module.service';
 export class StudentDetailComponent implements OnInit {
 
   public students: Student[] = [];
-  // public modules: Module[] = [];
   modules: Module[] = [];
 
   @Input()
@@ -26,8 +23,6 @@ export class StudentDetailComponent implements OnInit {
 
   constructor(
     public studentService: StudentService,
-    public moduleService: ModuleService,
-    public studentModuleService: StudentModuleService,
     protected router: Router,
     protected activeRoute: ActivatedRoute) {
     activeRoute.params.subscribe(value => {
@@ -40,11 +35,10 @@ export class StudentDetailComponent implements OnInit {
           studentModuleList.forEach(studentModule => {
             studentModule.getRelation(Module, 'module').subscribe(module => console.log(module));
           });
-        })
+        });
         this.student = student;
         this.StudentName.setValue(this.student.name);
         this.StudentDoB.setValue(this.student.dateOfBirth);
-        //this.modules = student.studentModules.map((value1: StudentModule) => value1.module );
       });
     });
   }
