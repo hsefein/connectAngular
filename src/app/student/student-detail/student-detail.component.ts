@@ -16,7 +16,8 @@ import {ModuleService} from '../../service/module.service';
 export class StudentDetailComponent implements OnInit {
 
   public students: Student[] = [];
-  public modules: Module[] = [];
+  // public modules: Module[] = [];
+  modules: Module[] = [];
 
   @Input()
   student: Student;
@@ -30,10 +31,20 @@ export class StudentDetailComponent implements OnInit {
     protected router: Router,
     protected activeRoute: ActivatedRoute) {
     activeRoute.params.subscribe(value => {
-      this.studentService.get(value['id']).subscribe(student => {
+      this.studentService.get(value['id'], [ {key: 'projection', value: 'detail'}]
+      ).subscribe(student => {
+        this.student = student;
+        student.getRelationArray(StudentModule, 'studentModules' ).subscribe(studentModuleList => {
+          console.log('mdoules')
+          console.log(studentModuleList);
+          studentModuleList.forEach(studentModule => {
+            studentModule.getRelation(Module, 'module').subscribe(module => console.log(module));
+          });
+        })
         this.student = student;
         this.StudentName.setValue(this.student.name);
         this.StudentDoB.setValue(this.student.dateOfBirth);
+        //this.modules = student.studentModules.map((value1: StudentModule) => value1.module );
       });
     });
   }
@@ -43,12 +54,12 @@ export class StudentDetailComponent implements OnInit {
     //   console.log(studentModules);
     //   console.log(this.student);
     // });
-    this.studentService.getAll().subscribe((students: Student[]) => {
-      this.students = students;
-      this.moduleService.getAll().subscribe((modules: Module[]) => {
-        this.modules = modules;
-      });
-    });
+    // this.studentService.getAll().subscribe((students: Student[]) => {
+    //   this.students = students;
+    //   this.moduleService.getAll().subscribe((modules: Module[]) => {
+    //     this.modules = modules;
+    //   });
+    // });
 
   }
 

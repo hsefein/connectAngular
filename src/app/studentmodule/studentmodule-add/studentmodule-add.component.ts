@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {StudentModuleService} from '../../service/studentmodule-service';
 import {StudentService} from '../../service/student-service';
 import {ModuleService} from '../../service/module.service';
@@ -7,7 +7,7 @@ import {Student} from '../../model/student';
 import {Module} from '../../model/module';
 import {FormControl} from '@angular/forms';
 import {validate} from 'codelyzer/walkerFactory/walkerFn';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-studentmodule-add',
@@ -16,40 +16,69 @@ import {Router} from '@angular/router';
 })
 export class StudentmoduleAddComponent implements OnInit {
 
-  public students: Student[] = [];
+  @Input()
+  student: Student;
+  // public students: Student[] = [];
   public modules: Module[] = [];
-  studentSelect: FormControl = new FormControl();
-  moduleSelect: FormControl = new FormControl();
+  StudentName = new FormControl();
+  moduleSelect = new FormControl();
+
+  // constructor(
+  //   protected activeRoute: ActivatedRoute) {
+  //   activeRoute.params.subscribe(value => {
+  //     this.studentService.get(value['id']).subscribe(student => {
+  //       this.student = student;
+  //       this.StudentName.setValue(this.student.name);
+  //       this.StudentDoB.setValue(this.student.dateOfBirth);
+  //     });
+  //   });
+  //
+  // }
 
   constructor(
     public studentModuleService: StudentModuleService,
     public studentService: StudentService,
     public moduleService: ModuleService,
-    protected router: Router) {
-
-  }
+    protected router: Router,
+    public activeRoute: ActivatedRoute) {}
+    // activeRoute.params.subscribe(value => {
+    //   this.studentService.get(value['id']).subscribe(student => {
+    //     this.student = student;
+    //     this.StudentName.setValue(this.student.name);
+    //   });
+    // this.moduleService.getAll().subscribe((modules: Module[]) => {
+    //   this.modules = modules;
+    // });
 
   ngOnInit() {
-    this.studentService.getAll().subscribe((students: Student[]) => {
-      this.students = students;
-      this.moduleService.getAll().subscribe((modules: Module[]) => {
-        this.modules = modules;
+    this.activeRoute.params.subscribe(value => {
+      this.studentService.get(value['id']).subscribe( student => {
+        this.student = student;
+        this.StudentName.setValue(this.student.name);
+        this.moduleService.getAll().subscribe((modules: Module[]) => {
+          this.modules = modules;
+        });
       });
+    // this.studentService.getAll().subscribe((students: Student[]) => {
+    //   this.student = student;
+    //   this.moduleService.getAll().subscribe((modules: Module[]) => {
+    //     this.modules = modules;
+    // });
     });
 
   }
 
 
-  addStudentModule() {
+  addStudentModule(): void {
     const studentModule: StudentModule = new StudentModule();
     studentModule.module = this.moduleSelect.value;
-    studentModule.student = this.studentSelect.value;
+    studentModule.student = this.student;
 
     this.studentModuleService.create(studentModule).subscribe(value => {
-        this.router.navigate(["/home"]);
-    }
-    , error1 => {
-      alert('error');
+      // this.ngOnInit();
+        this.router.navigate(['/home']);
+    }, error1 => {
+      alert(`Could not update: ${error1}`);
     });
   }
 }

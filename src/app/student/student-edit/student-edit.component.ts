@@ -16,7 +16,10 @@ export class StudentEditComponent implements OnInit {
   StudentName = new FormControl();
   StudentDoB = new FormControl(new Date().toISOString());
 
-  constructor(public studentService: StudentService, protected router: Router, protected activeRoute: ActivatedRoute) {
+  constructor(
+    public studentService: StudentService,
+    protected router: Router,
+    protected activeRoute: ActivatedRoute) {
     activeRoute.params.subscribe(value => {
       this.studentService.get(value['id']).subscribe(student => {
         this.student = student;

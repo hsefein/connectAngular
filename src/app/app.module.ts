@@ -13,7 +13,7 @@ import {
   MatBadgeModule,
   MatButtonModule,
   MatCardModule,
-  MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
+  MatCheckboxModule, MatDatepickerModule, MatDialog, MatDialogModule, MatFormFieldModule,
   MatIconModule,
   MatInputModule, MatNativeDateModule,
   MatOptionModule, MatSelectModule,
@@ -53,6 +53,7 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
+    MatDialogModule,
     AppRoutingModule,
     MatCheckboxModule,
     MatTableModule,

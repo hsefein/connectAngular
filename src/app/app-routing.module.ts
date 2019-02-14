@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'module/module-edit', component: ModuleEditComponent},
   {path: 'module/module-list', component: ModuleListComponent},
   {path: 'module/module-detail', component: ModuleDetailComponent},
-  {path: 'studentmodule/studentmodule-add', component: StudentmoduleAddComponent},
+  {path: 'studentmodule/studentmodule-add/:id', component: StudentmoduleAddComponent},
   {path: 'studentmodule/studentmodule-edit', component: StudentmoduleEditComponent},
   {path: 'studentmodule/studentmodule-list', component: StudentmoduleListComponent},
   {path: 'studentmodule/studentmodule-detail', component: StudentmoduleDetailComponent},
