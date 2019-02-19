@@ -1,14 +1,14 @@
 
-{{student.id}}
-
 <table class="table table-striped">
   <tr>
+    <th>Id</th>
     <th>Student Name</th>
     <th>Module Name</th>
     <th>Edit</th>
     <th>Delete</th>
   </tr>
   <tr *ngFor="let studentModule of studentModules">
+    <td>{{student.id}}</td>
     <td>{{studentModule.student ? studentModule.student.name : 'Not set' }}</td>
     <td>{{studentModule.module ? studentModule.module.name : 'Not set'}}</td>
     <td>

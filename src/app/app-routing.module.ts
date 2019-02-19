@@ -21,7 +21,11 @@ const routes: Routes = [
   {path: 'student/student-add', component: StudentAddComponent},
   {path: 'student/student-edit/:id', component: StudentEditComponent},
   {path: 'student/student-list', component: StudentListComponent},
-  {path: 'student/student-detail/:id', component: StudentDetailComponent},
+  {path: 'student/student-detail/:id', component: StudentDetailComponent,
+    children: [
+      // {path: '', redirectTo: 'modules'},
+      {path: 'modules', component: StudentmoduleListComponent}
+    ]},
   {path: 'module/module-add', component: ModuleAddComponent},
   {path: 'module/module-edit', component: ModuleEditComponent},
   {path: 'module/module-list', component: ModuleListComponent},

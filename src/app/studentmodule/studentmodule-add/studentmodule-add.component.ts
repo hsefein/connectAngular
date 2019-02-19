@@ -18,22 +18,9 @@ export class StudentmoduleAddComponent implements OnInit {
 
   @Input()
   student: Student;
-  // public students: Student[] = [];
   public modules: Module[] = [];
   StudentName = new FormControl();
   moduleSelect = new FormControl();
-
-  // constructor(
-  //   protected activeRoute: ActivatedRoute) {
-  //   activeRoute.params.subscribe(value => {
-  //     this.studentService.get(value['id']).subscribe(student => {
-  //       this.student = student;
-  //       this.StudentName.setValue(this.student.name);
-  //       this.StudentDoB.setValue(this.student.dateOfBirth);
-  //     });
-  //   });
-  //
-  // }
 
   constructor(
     public studentModuleService: StudentModuleService,
@@ -41,14 +28,6 @@ export class StudentmoduleAddComponent implements OnInit {
     public moduleService: ModuleService,
     protected router: Router,
     public activeRoute: ActivatedRoute) {}
-    // activeRoute.params.subscribe(value => {
-    //   this.studentService.get(value['id']).subscribe(student => {
-    //     this.student = student;
-    //     this.StudentName.setValue(this.student.name);
-    //   });
-    // this.moduleService.getAll().subscribe((modules: Module[]) => {
-    //   this.modules = modules;
-    // });
 
   ngOnInit() {
     this.activeRoute.params.subscribe(value => {
@@ -59,15 +38,8 @@ export class StudentmoduleAddComponent implements OnInit {
           this.modules = modules;
         });
       });
-    // this.studentService.getAll().subscribe((students: Student[]) => {
-    //   this.student = student;
-    //   this.moduleService.getAll().subscribe((modules: Module[]) => {
-    //     this.modules = modules;
-    // });
     });
-
   }
-
 
   addStudentModule(): void {
     const studentModule: StudentModule = new StudentModule();

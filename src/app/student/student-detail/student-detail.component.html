@@ -7,15 +7,20 @@
 
   <table class="table table-striped">
     <tr>
-      <td><mat-label>Student Name</mat-label></td>
-      <td><mat-label>Date of Birth</mat-label></td>
+      <th><mat-label>Id:</mat-label></th>
+      <td>{{student.id}}</td>
     </tr>
     <tr>
+      <th><mat-label>Name:</mat-label></th>
       <td>{{student.name}}</td>
-      <td>{{student.dateOfBirth | date: 'dd.MM.yyyy'}}</td>
     </tr>
+    <tr>
+      <th><mat-label>DoB:</mat-label></th>
+      <td>{{student.dateOfBirth}}</td>
+    </tr>
+
   </table>
-  {{student.id}}
+  <!--<a [routerLink]="['./modules']" >Student Modules</a>-->
   <a *ngIf="student" mat-raised-button color="primary" [routerLink]="['/student/student-edit',student.id]" >Edit</a>
 </mat-card>
 </div>
@@ -25,22 +30,6 @@
       <mat-card>
 
         <h3>Student Module</h3>
-        <!--<table class="table table-striped">-->
-          <!--<tr>-->
-            <!--<th>Module Name</th>-->
-            <!--<th>Edit</th>-->
-            <!--<th>Delete</th>-->
-          <!--</tr>-->
-          <!--<tr>-->
-            <!--<td>{{module.name}}</td>-->
-            <!--<td><a mat-button>-->
-              <!--<mat-icon color="primary">edit</mat-icon>-->
-            <!--</a></td>-->
-            <!--<td><a mat-button>-->
-              <!--<mat-icon color="warn" >delete_forever</mat-icon>-->
-            <!--</a></td>-->
-          <!--</tr>-->
-        <!--</table>-->
         <app-studentmodule-list></app-studentmodule-list>
 
         <a mat-button [routerLink]="['/studentmodule/studentmodule-add',student.id]">

@@ -19,7 +19,7 @@ export class StudentDetailComponent implements OnInit {
   @Input()
   student: Student;
   StudentName = new FormControl();
-  StudentDoB = new FormControl();
+  StudentDoB = new FormControl(new Date().toISOString());
 
   constructor(
     public studentService: StudentService,
@@ -30,7 +30,7 @@ export class StudentDetailComponent implements OnInit {
       ).subscribe(student => {
         this.student = student;
         student.getRelationArray(StudentModule, 'studentModules' ).subscribe(studentModuleList => {
-          console.log('mdoules')
+          console.log('modules');
           console.log(studentModuleList);
           studentModuleList.forEach(studentModule => {
             studentModule.getRelation(Module, 'module').subscribe(module => console.log(module));
@@ -43,59 +43,10 @@ export class StudentDetailComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    // this.student.getRelation(StudentModule, 'studentModules').subscribe(studentModules => {
-    //   console.log(studentModules);
-    //   console.log(this.student);
-    // });
-    // this.studentService.getAll().subscribe((students: Student[]) => {
-    //   this.students = students;
-    //   this.moduleService.getAll().subscribe((modules: Module[]) => {
-    //     this.modules = modules;
-    //   });
-    // });
-
-  }
-
-  editStudent(): void {
-    this.student.name = this.StudentName.value;
-    this.studentService
-      .update(this.student)
-      .subscribe(value => this.ngOnInit());
+  ngOnInit() {
   }
 
 }
-
-
-
-// addStudentModule() {
-//   const studentModule: StudentModule = new StudentModule();
-//   studentModule.module = this.moduleSelect.value;
-//   studentModule.student = this.studentSelect.value;
-//
-//   this.studentModuleService.create(studentModule).subscribe(value => {
-//     this.router.navigate(["/home"]);
-//   });
-// }
-
-
-
-// ngOnInit(): void {
-//   this.studentService.getAll({
-//     params: [
-//       {'key': 'projection',
-//         'value': 'detail'}
-//     ]
-//   }).subscribe(value => {
-//     this.students = value;
-//
-//     // this.student[0].getRelationArray(StudentModule, 'studentModules').subscribe(studentModules => {
-//     //   console.log(studentModules);
-//     //   console.log(this.student[0]);
-//     // });
-//   });
-//
-// }
 
 
 
